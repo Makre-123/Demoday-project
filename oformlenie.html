@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформление заказа — AI TEXNO COMPANY</title>
+  <meta name="description" content="Оформление заказа гаджетов с быстрой доставкой по Узбекистану и гарантией 36 месяцев.">
+  
+  <!-- Google Fonts: Orbitron & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon-box">
+          <div class="logo-icon-inner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2.2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">AI TEXNO</span>
+          <span class="logo-sub">COMPANY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="index.html#catalog" class="nav-link">Каталог</a></li>
+          <li><a href="index.html#about" class="nav-link">О нас</a></li>
+          <li><a href="index.html#contacts" class="nav-link">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="login.html" class="btn-auth">
+          <span>Вход / Регистрация</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CHECKOUT PAGE CONTAINER -->
+  <main class="section-padding">
+    <div class="container">
+      
+      <!-- Page Header -->
+      <div style="margin-bottom: 40px;">
+        <span class="section-tag">Оформление покупки</span>
+        <h1 class="section-title" style="font-size:2.2rem;">Оформление заказа <span>AI TEXNO</span></h1>
+        <p style="color:var(--text-muted);">Заполните данные для экспресс-доставки по Узбекистану.</p>
+      </div>
+
+      <!-- Grid: Form + Summary -->
+      <form action="#order-success" method="get" class="detail-grid" style="align-items: flex-start;">
+        
+        <!-- LEFT COLUMN: ORDER DETAILS FORM -->
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          
+          <!-- Section 1: Customer Info -->
+          <div class="product-card" style="padding:28px;">
+            <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+              <span style="width:28px; height:28px; border-radius:50%; background:var(--cyan-primary); color:#050813; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800;">1</span>
+              Контактные данные получателя
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">Полное имя (ФИО):</label>
+              <input type="text" class="form-input" placeholder="Сардор Рахимов" required>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Номер телефона (Узбекистан):</label>
+                <input type="tel" class="form-input" placeholder="+998 90 123 45 67" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email для квитанции:</label>
+                <input type="email" class="form-input" placeholder="sardor@domain.uz" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Delivery Address -->
+          <div class="product-card" style="padding:28px;">
+            <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+              <span style="width:28px; height:28px; border-radius:50%; background:var(--cyan-primary); color:#050813; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800;">2</span>
+              Адрес курьерской доставки
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">Город / Регион Узбекистана:</label>
+              <select class="form-input" style="background:#060913;" required>
+                <option value="tashkent">г. Ташкент (Доставка 2-3 часа)</option>
+                <option value="samarkand">г. Самарканд (Доставка 24 часа)</option>
+                <option value="bukhara">г. Бухара (Доставка 24 часа)</option>
+                <option value="namangan">г. Наманган</option>
+                <option value="andijan">г. Андижан</option>
+                <option value="fergana">г. Фергана</option>
+                <option value="navoiy">г. Навои</option>
+                <option value="urgench">г. Ургенч / Хорезм</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Улица, дом, номер квартиры/офиса:</label>
+              <input type="text" class="form-input" placeholder="ул. Навои, дом 15, кв. 42" required>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Комментарий для курьера (необязательно):</label>
+              <input type="text" class="form-input" placeholder="Позвонить за 30 минут до приезда">
+            </div>
+          </div>
+
+          <!-- Section 3: Payment Method -->
+          <div class="product-card" style="padding:28px;">
+            <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+              <span style="width:28px; height:28px; border-radius:50%; background:var(--cyan-primary); color:#050813; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800;">3</span>
+              Выберите способ оплаты
+            </h3>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <label class="form-checkbox-label" style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px; border:1px solid var(--bg-glass-border);">
+                <input type="radio" name="pay-method" checked>
+                <span style="color:#fff; font-weight:700;">💳 Payme / Click / Uzum</span>
+              </label>
+
+              <label class="form-checkbox-label" style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px; border:1px solid var(--bg-glass-border);">
+                <input type="radio" name="pay-method">
+                <span style="color:#fff; font-weight:700;">🟢 Uzcard / Humo онлайн</span>
+              </label>
+
+              <label class="form-checkbox-label" style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px; border:1px solid var(--bg-glass-border);">
+                <input type="radio" name="pay-method">
+                <span style="color:#fff; font-weight:700;">💵 Наличными при получении</span>
+              </label>
+
+              <label class="form-checkbox-label" style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px; border:1px solid var(--bg-glass-border);">
+                <input type="radio" name="pay-method">
+                <span style="color:#fff; font-weight:700;">🏦 Рассрочка Anorbank / Uzum Nasiya</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: ORDER SUMMARY BOX -->
+        <div class="product-card" style="padding:28px; position:sticky; top:100px;">
+          <h3 style="font-family:var(--font-display); font-size:1.3rem; color:#fff; margin-bottom:20px;">Состав вашего заказа</h3>
+
+          <!-- Items -->
+          <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:20px;">
+            
+            <div class="cart-item">
+              <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=150&q=80" alt="NeuroPhone X Ultra" class="cart-item-img">
+              <div class="cart-item-info">
+                <h4 style="font-size:0.9rem;">NeuroPhone X Ultra</h4>
+                <div class="cart-item-price">14 990 000 сум</div>
+              </div>
+            </div>
+
+            <div class="cart-item">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=150&q=80" alt="AuraSound AI Pro" class="cart-item-img">
+              <div class="cart-item-info">
+                <h4 style="font-size:0.9rem;">AuraSound AI Pro</h4>
+                <div class="cart-item-price">3 850 000 сум</div>
+              </div>
+            </div>
+
+            <div class="cart-item">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=150&q=80" alt="Chronos Neural Pulse" class="cart-item-img">
+              <div class="cart-item-info">
+                <h4 style="font-size:0.9rem;">Chronos Neural Pulse</h4>
+                <div class="cart-item-price">5 150 000 сум</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Total Calculation -->
+          <div class="summary-row">
+            <span>Стоимость товаров:</span>
+            <span>24 000 000 сум</span>
+          </div>
+          <div class="summary-row">
+            <span>Скидка AI Club:</span>
+            <span style="color:var(--emerald-accent);">-100 000 сум</span>
+          </div>
+          <div class="summary-row">
+            <span>Экспресс-доставка:</span>
+            <span style="color:var(--cyan-primary);">Бесплатно</span>
+          </div>
+
+          <div class="summary-total" style="margin-bottom:24px;">
+            <span>Итого к оплате:</span>
+            <span class="total-amount">23 990 000 сум</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; font-size:1.1rem; padding:18px;">
+            Подтвердить и оплатить заказ &rarr;
+          </button>
+
+          <p style="text-align:center; font-size:0.75rem; color:var(--text-dim); margin-top:14px;">
+            🔒 Безопасный 256-bit SSL шифрованный платеж &bull; Гарантия 36 месяцев
+          </p>
+
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <!-- SUCCESS MODAL ON SUBMIT (:target = #order-success) -->
+  <div id="order-success" class="modal-overlay">
+    <div class="modal-dialog" style="max-width: 460px; text-align: center; padding: 40px 30px;">
+      <a href="index.html" class="modal-close-btn">&times;</a>
+      <div style="width:70px; height:70px; border-radius:50%; background:rgba(0,245,160,0.15); border:2px solid var(--emerald-accent); color:var(--emerald-accent); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2.2rem;">
+        ✓
+      </div>
+      <h2 style="font-family:var(--font-display); font-size:1.6rem; margin-bottom:12px; color:#fff;">Ваш заказ успешно принят!</h2>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:24px;">
+        Номер заказа: <strong style="color:var(--cyan-primary);">#AI-88349</strong>.<br>
+        Наш курьер в Ташкенте свяжется с вами по указанному номеру для подтверждения времени доставки.
+      </p>
+      <a href="index.html" class="btn btn-primary" style="width:100%;">Вернуться в каталог</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 AI TEXNO COMPANY UZBEKISTAN. Все права защищены.</div>
+        <div><a href="index.html" style="color:var(--cyan-primary);">Главная страница</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
