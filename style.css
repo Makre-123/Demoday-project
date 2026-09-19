@@ -1713,6 +1713,30 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  /* Mobile-only performance optimization: keep desktop 100% unchanged */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-attachment: scroll;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .site-header,
+  .phone-bottom-tabbar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   .header-inner {
     height: 74px;
   }
