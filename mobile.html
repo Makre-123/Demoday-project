@@ -2,52 +2,76 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AI TEXNO COMPANY — Мобильная версия интернет-магазина в Узбекистане</title>
-  <meta name="description" content="Официальное мобильное веб-приложение AI TEXNO COMPANY. Покупка умной техники и нейрогаджетов с доставкой по Узбекистану.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AI TEXNO MOBILE — Нативное мобильное приложение в Узбекистане</title>
+  <meta name="description" content="Официальная мобильная версия интернет-магазина AI TEXNO COMPANY для телефонов в Узбекистане.">
   
   <!-- Google Fonts: Orbitron & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- External Stylesheet -->
+  <!-- Base Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- DEDICATED PURE CSS MOBILE APP STYLES -->
   <style>
     /* --------------------------------------------------------------------------
-       NATIVE MOBILE WEB APP SPECIFIC STYLES (PURE CSS)
+       STRICT PHONE APP FRAMEWORK (PURE CSS - NO HORIZONTAL STRETCH)
        -------------------------------------------------------------------------- */
+    html {
+      background-color: #040711;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
     body {
-      padding-bottom: 74px; /* Space for sticky bottom tab bar */
-      font-size: 15px;
+      width: 100%;
+      max-width: 480px; /* Lock strictly to phone width */
+      margin: 0 auto;
+      min-height: 100vh;
+      background-color: #0a0f1d;
+      color: var(--text-main);
+      padding-bottom: 76px; /* Space for sticky bottom tab bar */
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 242, 254, 0.15);
+      position: relative;
+      overflow-x: hidden;
+      border-left: 1px solid rgba(0, 242, 254, 0.12);
+      border-right: 1px solid rgba(0, 242, 254, 0.12);
+      box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Mobile Header */
-    .mobile-app-header {
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    /* Fixed Sticky Mobile Header Locked to 480px Phone Frame */
+    .phone-app-header {
       position: sticky;
       top: 0;
+      width: 100%;
+      max-width: 480px;
       z-index: 990;
-      background: rgba(6, 9, 19, 0.92);
+      background: rgba(6, 9, 19, 0.94);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid rgba(0, 242, 254, 0.2);
-      padding: 12px 16px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .mobile-app-logo {
+    .phone-logo {
       display: flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
     }
 
-    .mobile-logo-icon {
+    .phone-logo-icon {
       width: 36px;
       height: 36px;
       border-radius: 10px;
@@ -55,134 +79,330 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px var(--cyan-glow);
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
-    .mobile-logo-text {
+    .phone-logo-text {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: #ffffff;
-      line-height: 1.1;
+      line-height: 1;
     }
 
-    .mobile-logo-text span {
+    .phone-logo-text span {
       display: block;
-      font-size: 0.55rem;
+      font-size: 0.52rem;
       letter-spacing: 0.25em;
       color: var(--cyan-primary);
+      margin-top: 2px;
     }
 
-    .mobile-header-right {
+    .phone-header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .mobile-icon-btn {
+    .phone-btn-icon {
       position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       background: var(--bg-surface);
       border: 1px solid var(--bg-glass-border);
       color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
     }
 
-    /* Mobile Horizontal Category Stories Chips */
-    .mobile-categories-bar {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 14px 16px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .mobile-categories-bar::-webkit-scrollbar {
+    /* Category Filter Radio Inputs (Pure CSS Functional Filters) */
+    .filter-radio {
       display: none;
     }
 
-    .chip-item {
-      flex-shrink: 0;
+    .phone-category-bar {
       display: flex;
-      align-items: center;
       gap: 8px;
-      padding: 8px 16px;
-      border-radius: 20px;
+      overflow-x: auto;
+      padding: 12px 14px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      background: rgba(6, 9, 19, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .phone-category-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .phone-chip-label {
+      flex-shrink: 0;
+      padding: 7px 14px;
+      border-radius: 18px;
       background: var(--bg-surface);
       border: 1px solid var(--bg-glass-border);
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition-fast);
       white-space: nowrap;
     }
 
-    .chip-item.active, .chip-item:active {
+    /* Functional CSS Filter States */
+    #filter-all:checked ~ .phone-category-bar label[for="filter-all"],
+    #filter-phones:checked ~ .phone-category-bar label[for="filter-phones"],
+    #filter-laptops:checked ~ .phone-category-bar label[for="filter-laptops"],
+    #filter-audio:checked ~ .phone-category-bar label[for="filter-audio"],
+    #filter-wearables:checked ~ .phone-category-bar label[for="filter-wearables"],
+    #filter-smart:checked ~ .phone-category-bar label[for="filter-smart"] {
       background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-secondary));
       color: #050813;
       border-color: transparent;
-      box-shadow: 0 0 15px var(--cyan-glow);
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
-    /* Mobile Hero Card Banner */
-    .mobile-hero-card {
-      margin: 10px 16px 24px;
-      padding: 24px 20px;
+    /* Filter Product Feed Logic */
+    #filter-phones:checked ~ #product-feed .cat-laptop,
+    #filter-phones:checked ~ #product-feed .cat-audio,
+    #filter-phones:checked ~ #product-feed .cat-wearable,
+    #filter-phones:checked ~ #product-feed .cat-smart {
+      display: none !important;
+    }
+
+    #filter-laptops:checked ~ #product-feed .cat-phone,
+    #filter-laptops:checked ~ #product-feed .cat-audio,
+    #filter-laptops:checked ~ #product-feed .cat-wearable,
+    #filter-laptops:checked ~ #product-feed .cat-smart {
+      display: none !important;
+    }
+
+    #filter-audio:checked ~ #product-feed .cat-phone,
+    #filter-audio:checked ~ #product-feed .cat-laptop,
+    #filter-audio:checked ~ #product-feed .cat-wearable,
+    #filter-audio:checked ~ #product-feed .cat-smart {
+      display: none !important;
+    }
+
+    #filter-wearables:checked ~ #product-feed .cat-phone,
+    #filter-wearables:checked ~ #product-feed .cat-laptop,
+    #filter-wearables:checked ~ #product-feed .cat-audio,
+    #filter-wearables:checked ~ #product-feed .cat-smart {
+      display: none !important;
+    }
+
+    #filter-smart:checked ~ #product-feed .cat-phone,
+    #filter-smart:checked ~ #product-feed .cat-laptop,
+    #filter-smart:checked ~ #product-feed .cat-audio,
+    #filter-smart:checked ~ #product-feed .cat-wearable {
+      display: none !important;
+    }
+
+    /* Phone Hero Banner */
+    .phone-hero {
+      margin: 12px 14px 20px;
+      padding: 20px 16px;
       border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(121, 40, 202, 0.25));
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(121, 40, 202, 0.3));
       border: 1px solid rgba(0, 242, 254, 0.3);
-      box-shadow: var(--shadow-glass);
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
-    .mobile-hero-tag {
+    .phone-hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
-      border-radius: 12px;
+      padding: 4px 10px;
+      border-radius: 10px;
       background: rgba(0, 242, 254, 0.15);
       color: var(--cyan-primary);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .mobile-hero-title {
+    .phone-hero-title {
       font-family: var(--font-display);
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 800;
       line-height: 1.2;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .mobile-hero-title span {
+    .phone-hero-title span {
       background: linear-gradient(90deg, var(--cyan-primary), var(--cyan-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .mobile-hero-desc {
-      font-size: 0.9rem;
+    .phone-hero-desc {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.5;
+      margin-bottom: 16px;
+      line-height: 1.45;
     }
 
-    /* Mobile Bottom Navigation Bar (Fixed 5-Tab Bar) */
-    .mobile-bottom-bar {
+    .phone-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .phone-stat-val {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--cyan-primary);
+    }
+
+    .phone-stat-lbl {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    /* Phone Product Card */
+    .phone-card {
+      margin: 0 14px 16px;
+      background: var(--bg-glass-card);
+      border: 1px solid var(--bg-glass-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .phone-card-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .phone-card-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .phone-card-cat {
+      font-size: 0.7rem;
+      color: var(--cyan-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .phone-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin: 3px 0 6px;
+    }
+
+    .phone-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .phone-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .phone-tag {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .phone-card-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .phone-price-curr {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .phone-price-old {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-decoration: line-through;
+    }
+
+    .phone-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 8px;
+    }
+
+    .phone-btn-sub {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-glass-border);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .phone-btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 10px 8px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-secondary));
+      color: #050813;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* Fixed Bottom Tab Bar Locked to 480px Frame */
+    .phone-bottom-nav {
       position: fixed;
       bottom: 0;
-      left: 0;
-      width: 100vw;
-      height: 68px;
+      width: 100%;
+      max-width: 480px;
+      height: 64px;
       background: rgba(6, 9, 19, 0.96);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -191,125 +411,38 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       align-items: center;
-      padding: 0 4px;
-      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.8);
     }
 
-    .tab-item {
+    .phone-tab-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
+      gap: 2px;
       color: var(--text-dim);
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 600;
       text-decoration: none;
-      padding: 6px 0;
-      transition: color 0.2s ease;
+      padding: 4px 0;
     }
 
-    .tab-item svg {
-      width: 22px;
-      height: 22px;
+    .phone-tab-item svg {
+      width: 20px;
+      height: 20px;
       stroke-width: 2;
     }
 
-    .tab-item.active, .tab-item:active {
+    .phone-tab-item.active {
       color: var(--cyan-primary);
     }
 
-    .tab-item.active svg {
-      filter: drop-shadow(0 0 8px var(--cyan-primary));
-    }
-
-    /* Native Mobile Bottom Sheet Modal */
-    .mobile-bottom-sheet {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(5, 8, 19, 0.85);
-      backdrop-filter: blur(15px);
-      z-index: 2000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .mobile-bottom-sheet:target {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .sheet-content {
-      width: 100%;
-      max-height: 85vh;
-      background: #0d1324;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border: 1px solid var(--bg-glass-border);
-      border-bottom: none;
-      padding: 24px 20px 40px;
-      overflow-y: auto;
-      transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
-    }
-
-    .mobile-bottom-sheet:target .sheet-content {
-      transform: translateY(0);
-    }
-
-    .sheet-drag-handle {
-      width: 40px;
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.25);
-      margin: 0 auto 18px;
-    }
-
-    /* Mobile Product Touch Card */
-    .mobile-product-card {
-      margin-bottom: 20px;
-      background: var(--bg-glass-card);
-      border: 1px solid var(--bg-glass-border);
-      border-radius: var(--radius-md);
+    /* Switch Mode Ribbon */
+    .phone-switch-banner {
+      margin: 24px 14px;
       padding: 16px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .mobile-product-badge {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      z-index: 2;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .mobile-product-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 14px;
-    }
-
-    /* Switch desktop banner */
-    .switch-desktop-banner {
-      margin: 30px 16px;
-      padding: 18px;
       border-radius: var(--radius-md);
-      background: rgba(0, 242, 254, 0.08);
+      background: rgba(0, 242, 254, 0.06);
       border: 1px dashed var(--cyan-primary);
       text-align: center;
     }
@@ -318,56 +451,65 @@
 <body>
 
   <!-- ==========================================================================
-       MOBILE APP HEADER
+       PURE CSS FILTER RADIO CONTROLS
        ========================================================================== -->
-  <header class="mobile-app-header">
-    <a href="mobile.html" class="mobile-app-logo">
-      <div class="mobile-logo-icon">
+  <input type="radio" name="mobile-filter" id="filter-all" class="filter-radio" checked>
+  <input type="radio" name="mobile-filter" id="filter-phones" class="filter-radio">
+  <input type="radio" name="mobile-filter" id="filter-laptops" class="filter-radio">
+  <input type="radio" name="mobile-filter" id="filter-audio" class="filter-radio">
+  <input type="radio" name="mobile-filter" id="filter-wearables" class="filter-radio">
+  <input type="radio" name="mobile-filter" id="filter-smart" class="filter-radio">
+
+  <!-- ==========================================================================
+       STRICT PHONE APP HEADER (480PX MAX-WIDTH)
+       ========================================================================== -->
+  <header class="phone-app-header">
+    <a href="mobile.html" class="phone-logo">
+      <div class="phone-logo-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#050813" stroke-width="2.5">
           <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
           <polyline points="2 17 12 22 22 17"></polyline>
           <polyline points="2 12 12 17 22 12"></polyline>
         </svg>
       </div>
-      <div class="mobile-logo-text">
+      <div class="phone-logo-text">
         AI TEXNO
-        <span>MOBILE UZ</span>
+        <span>MOBILE STORE UZ</span>
       </div>
     </a>
 
-    <!-- Pure CSS Mobile Drawer Checkbox -->
-    <input type="checkbox" id="mobile-drawer-toggle" class="mobile-toggle-input">
+    <!-- Checkbox Drawer Toggle -->
+    <input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle-input">
 
-    <div class="mobile-header-right">
-      <a href="index.html" class="mobile-icon-btn" title="Полная ПК версия" style="font-size:0.75rem; width:auto; padding:0 10px; gap:4px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <div class="phone-header-actions">
+      <a href="index.html" class="phone-btn-icon" title="Переключить на ПК версию" style="font-size:0.7rem; width:auto; padding:0 8px; gap:4px; font-weight:700; color:var(--cyan-primary);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         ПК версия
       </a>
 
-      <a href="oformlenie.html" class="mobile-icon-btn" title="Корзина">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="oformlenie.html" class="phone-btn-icon" title="Корзина">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
-        <span class="cart-badge" style="top:-4px; right:-4px;">3</span>
+        <span class="cart-badge" style="top:-4px; right:-4px; min-width:18px; height:18px; font-size:0.65rem;">3</span>
       </a>
 
-      <label for="mobile-drawer-toggle" class="mobile-toggle-btn" aria-label="Меню">
+      <label for="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Открыть меню">
         <span></span>
         <span></span>
         <span></span>
       </label>
     </div>
 
-    <!-- Pure CSS Drawer Menu -->
-    <div class="mobile-nav-drawer">
+    <!-- Pure CSS Mobile Menu Drawer -->
+    <div class="mobile-nav-drawer" style="max-width:480px; left:50%; transform:translateX(-50%);">
       <ul class="mobile-nav-menu">
         <li><a href="mobile.html" class="mobile-nav-link"><span>📱 Главная мобильная</span> &rarr;</a></li>
-        <li><a href="#catalog" class="mobile-nav-link"><span>🛍️ Каталог девайсов (12)</span> &rarr;</a></li>
-        <li><a href="#about" class="mobile-nav-link"><span>🏢 О компании</span> &rarr;</a></li>
-        <li><a href="#reviews" class="mobile-nav-link"><span>⭐ Отзывы покупателей</span> &rarr;</a></li>
-        <li><a href="oformlenie.html" class="mobile-nav-link"><span>🛒 Заказ и Оформление</span> &rarr;</a></li>
-        <li><a href="index.html" class="mobile-nav-link" style="color:var(--cyan-primary);"><span>💻 Переключить на ПК версию</span> &rarr;</a></li>
+        <li><a href="#product-feed" class="mobile-nav-link"><span>🛍️ Каталог (12 товаров)</span> &rarr;</a></li>
+        <li><a href="#about-section" class="mobile-nav-link"><span>🏢 О нашей компании</span> &rarr;</a></li>
+        <li><a href="oformlenie.html" class="mobile-nav-link"><span>🛒 Заказ и Корзина (3)</span> &rarr;</a></li>
+        <li><a href="index.html" class="mobile-nav-link" style="color:var(--cyan-primary);"><span>💻 Полноэкранный сайт для ПК</span> &rarr;</a></li>
       </ul>
 
       <div class="mobile-nav-actions">
@@ -382,214 +524,333 @@
   </header>
 
   <!-- ==========================================================================
-       SCROLLABLE CATEGORY CHIPS / STORIES BAR
+       CATEGORY CHIPS (PURE CSS FUNCTIONAL FILTERS)
        ========================================================================== -->
-  <div class="mobile-categories-bar scroll-reveal">
-    <a href="#catalog" class="chip-item active">🔥 Все (12)</a>
-    <a href="#catalog" class="chip-item">📱 Смартфоны</a>
-    <a href="#catalog" class="chip-item">💻 Ноутбуки</a>
-    <a href="#catalog" class="chip-item">🎧 Аудио</a>
-    <a href="#catalog" class="chip-item">⌚ Часы &amp; ИИ</a>
-    <a href="#catalog" class="chip-item">🤖 Умный дом</a>
+  <div class="phone-category-bar scroll-reveal">
+    <label for="filter-all" class="phone-chip-label">🔥 Все девайсы (12)</label>
+    <label for="filter-phones" class="phone-chip-label">📱 Смартфоны (3)</label>
+    <label for="filter-laptops" class="phone-chip-label">💻 Ноутбуки (2)</label>
+    <label for="filter-audio" class="phone-chip-label">🎧 Аудио (2)</label>
+    <label for="filter-wearables" class="phone-chip-label">⌚ Часы (2)</label>
+    <label for="filter-smart" class="phone-chip-label">🤖 Умный дом (3)</label>
   </div>
 
   <!-- ==========================================================================
-       NATIVE MOBILE HERO BANNER
+       PHONE HERO BANNER
        ========================================================================== -->
-  <section class="mobile-hero-card scroll-reveal">
-    <div class="mobile-hero-tag">
-      ⚡ Нейротехнологии 2026 в Ташкенте
+  <section class="phone-hero scroll-reveal">
+    <div class="phone-hero-badge">
+      ⚡ Нейрогаджеты 2026 в Узбекистане
     </div>
-    
-    <h1 class="mobile-hero-title">
-      Умная техника <span>будущего</span>
+
+    <h1 class="phone-hero-title">
+      Технологии ИИ <span>в вашем кармане</span>
     </h1>
 
-    <p class="mobile-hero-desc">
-      Интеллектуальные гаджеты, нейропроцессоры и электроника с быстрой доставкой по всему Узбекистану и гарантией 36 месяцев.
+    <p class="phone-hero-desc">
+      Интеллектуальная техника и смарт-девайсы с официальной гарантией 36 месяцев и экспресс-доставкой по Узбекистану.
     </p>
 
-    <div style="display:flex; flex-direction:column; gap:10px;">
-      <a href="#catalog" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Открыть каталог товаров
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <a href="#product-feed" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px; font-size:0.9rem;">
+        Смотреть каталог
       </a>
-      <a href="registration.html" class="btn btn-secondary" style="width:100%; justify-content:center; padding:12px; font-size:0.9rem;">
-        Создать AI ID (+ 100 000 бонусов)
+      <a href="registration.html" class="btn btn-secondary" style="width:100%; justify-content:center; padding:10px; font-size:0.82rem;">
+        Создать AI ID профиль
       </a>
+    </div>
+
+    <div class="phone-hero-stats">
+      <div>
+        <div class="phone-stat-val">99.8%</div>
+        <div class="phone-stat-lbl">Довольных</div>
+      </div>
+      <div>
+        <div class="phone-stat-val">50 000+</div>
+        <div class="phone-stat-lbl">Доставлено</div>
+      </div>
+      <div>
+        <div class="phone-stat-val">36 Мес</div>
+        <div class="phone-stat-lbl">Гарантия</div>
+      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       MOBILE PRODUCT CATALOG FEED (TOUCH CARDS)
+       PRODUCT FEED CONTAINER (ALL 12 PRODUCTS)
        ========================================================================== -->
-  <section id="catalog" style="padding:0 16px;">
+  <main id="product-feed">
     
-    <div style="margin-bottom:20px;" class="scroll-reveal">
-      <span class="section-tag" style="font-size:0.75rem;">Мобильный каталог</span>
-      <h2 style="font-family:var(--font-display); font-size:1.5rem; color:#fff;">Популярные девайсы</h2>
-      <p style="font-size:0.85rem; color:var(--text-muted);">Цены в узбекском суме (UZS) с официальной гарантией</p>
+    <div style="padding:0 14px 10px;" class="scroll-reveal">
+      <span class="section-tag" style="font-size:0.72rem;">Мобильный каталог</span>
+      <h2 style="font-family:var(--font-display); font-size:1.35rem; color:#fff;">Товары в Ташкенте</h2>
     </div>
 
-    <!-- Product Card 1 -->
-    <div class="mobile-product-card scroll-reveal">
-      <span class="mobile-product-badge badge-hot">Хит продаж</span>
-      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="NeuroPhone X Ultra" class="mobile-product-img">
-      <div style="font-size:0.75rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Смартфоны</div>
-      <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin:4px 0 6px;">NeuroPhone X Ultra</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Quantum NPU 5nm, 200MP камера с ночным ИИ-видением.</p>
+    <!-- Product 1 -->
+    <div class="phone-card cat-phone scroll-reveal">
+      <span class="phone-card-badge badge-hot">Хит продаж</span>
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="NeuroPhone X Ultra" class="phone-card-img">
+      <div class="phone-card-cat">Смартфоны</div>
+      <h3 class="phone-card-title">NeuroPhone X Ultra</h3>
+      <p class="phone-card-desc">Флагман на базе Quantum NPU 5nm, 200MP камера с ночным ИИ-видением.</p>
       
-      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-        <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#fff;">14 990 000 сум</span>
-        <span style="font-size:0.8rem; color:var(--text-dim); text-decoration:line-through;">17 500 000 сум</span>
+      <div class="phone-card-tags">
+        <span class="phone-tag">Quantum NPU</span>
+        <span class="phone-tag">6.8" 144Hz</span>
+        <span class="phone-tag">512 GB</span>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-        <a href="#m-quickview-1" class="btn-quickview" style="padding:12px 6px; text-align:center;">Подробнее</a>
-        <a href="oformlenie.html" class="btn-addcart" style="padding:12px 6px; text-align:center;">Купить сейчас</a>
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">14 990 000 сум</span>
+        <span class="phone-price-old">17 500 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-1" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
       </div>
     </div>
 
-    <!-- Product Card 2 -->
-    <div class="mobile-product-card scroll-reveal">
-      <span class="mobile-product-badge badge-ai">ИИ-Архитектура</span>
-      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="CyberBook Pro 16 AI" class="mobile-product-img">
-      <div style="font-size:0.75rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Ноутбуки</div>
-      <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin:4px 0 6px;">CyberBook Pro 16 AI</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Ускоритель нейросетей, 64GB RAM, 3.2K OLED дисплей.</p>
+    <!-- Product 2 -->
+    <div class="phone-card cat-laptop scroll-reveal">
+      <span class="phone-card-badge badge-ai">ИИ-Архитектура</span>
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="CyberBook Pro 16 AI" class="phone-card-img">
+      <div class="phone-card-cat">Ноутбуки</div>
+      <h3 class="phone-card-title">CyberBook Pro 16 AI</h3>
+      <p class="phone-card-desc">Ускоритель нейросетей, 64GB RAM и 3.2K OLED экран для тяжелых задач.</p>
       
-      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-        <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#fff;">31 990 000 сум</span>
-        <span style="font-size:0.8rem; color:var(--text-dim); text-decoration:line-through;">35 000 000 сум</span>
+      <div class="phone-card-tags">
+        <span class="phone-tag">RTX 4090 Mobile</span>
+        <span class="phone-tag">64 GB RAM</span>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-        <a href="#m-quickview-2" class="btn-quickview" style="padding:12px 6px; text-align:center;">Подробнее</a>
-        <a href="oformlenie.html" class="btn-addcart" style="padding:12px 6px; text-align:center;">Купить сейчас</a>
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">31 990 000 сум</span>
+        <span class="phone-price-old">35 000 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-2" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
       </div>
     </div>
 
-    <!-- Product Card 3 -->
-    <div class="mobile-product-card scroll-reveal">
-      <span class="mobile-product-badge badge-new">Новинка</span>
-      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="AuraSound AI Pro" class="mobile-product-img">
-      <div style="font-size:0.75rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Аудиосистемы</div>
-      <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin:4px 0 6px;">AuraSound AI Pro</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Шумоподавление -50dB, 3D-звук и 60 часов автономии.</p>
+    <!-- Product 3 -->
+    <div class="phone-card cat-audio scroll-reveal">
+      <span class="phone-card-badge badge-new">Новинка</span>
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="AuraSound AI Pro" class="phone-card-img">
+      <div class="phone-card-cat">Аудиосистемы</div>
+      <h3 class="phone-card-title">AuraSound AI Pro</h3>
+      <p class="phone-card-desc">Наушники с квантовым шумоподавлением -50dB и 60ч работы.</p>
       
-      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-        <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#fff;">3 850 000 сум</span>
-        <span style="font-size:0.8rem; color:var(--text-dim); text-decoration:line-through;">4 400 000 сум</span>
+      <div class="phone-card-tags">
+        <span class="phone-tag">Adaptive ANC</span>
+        <span class="phone-tag">Hi-Res 3D</span>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-        <a href="#m-quickview-3" class="btn-quickview" style="padding:12px 6px; text-align:center;">Подробнее</a>
-        <a href="oformlenie.html" class="btn-addcart" style="padding:12px 6px; text-align:center;">Купить сейчас</a>
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">3 850 000 сум</span>
+        <span class="phone-price-old">4 400 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-3" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
       </div>
     </div>
 
-    <!-- Product Card 4 -->
-    <div class="mobile-product-card scroll-reveal">
-      <span class="mobile-product-badge badge-ai">Биосенсор</span>
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Chronos Neural Pulse" class="mobile-product-img">
-      <div style="font-size:0.75rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Носимые устройства</div>
-      <h3 style="font-family:var(--font-display); font-size:1.2rem; color:#fff; margin:4px 0 6px;">Chronos Neural Pulse</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Мониторинг здоровья, ЭКГ и предиктивный анализ ИИ.</p>
+    <!-- Product 4 -->
+    <div class="phone-card cat-wearable scroll-reveal">
+      <span class="phone-card-badge badge-ai">Биосенсор</span>
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Chronos Neural Pulse" class="phone-card-img">
+      <div class="phone-card-cat">Часы</div>
+      <h3 class="phone-card-title">Chronos Neural Pulse</h3>
+      <p class="phone-card-desc">Непрерывный мониторинг здоровья: ЭКГ и предиктивная ИИ-диагностика.</p>
       
-      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
-        <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#fff;">5 150 000 сум</span>
-        <span style="font-size:0.8rem; color:var(--text-dim); text-decoration:line-through;">5 900 000 сум</span>
+      <div class="phone-card-tags">
+        <span class="phone-tag">ECG Sensor</span>
+        <span class="phone-tag">Titanium</span>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-        <a href="#m-quickview-4" class="btn-quickview" style="padding:12px 6px; text-align:center;">Подробнее</a>
-        <a href="oformlenie.html" class="btn-addcart" style="padding:12px 6px; text-align:center;">Купить сейчас</a>
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">5 150 000 сум</span>
+        <span class="phone-price-old">5 900 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-4" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
       </div>
     </div>
 
-  </section>
+    <!-- Product 5 -->
+    <div class="phone-card cat-smart scroll-reveal">
+      <span class="phone-card-badge badge-hot">Топ VR</span>
+      <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" alt="VisionPro AI VR" class="phone-card-img">
+      <div class="phone-card-cat">Умный дом &amp; VR</div>
+      <h3 class="phone-card-title">VisionPro AI VR</h3>
+      <p class="phone-card-desc">Шлем дополненной реальности с трекингом взгляда и нейроинтерфейсом.</p>
+      
+      <div class="phone-card-tags">
+        <span class="phone-tag">8K Micro-OLED</span>
+        <span class="phone-tag">Eye Tracking</span>
+      </div>
+
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">18 500 000 сум</span>
+        <span class="phone-price-old">21 000 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-5" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="phone-card cat-smart scroll-reveal">
+      <span class="phone-card-badge badge-new">ИИ-Уборка</span>
+      <img src="https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?auto=format&fit=crop&w=800&q=80" alt="Robocleaner AI Ultra" class="phone-card-img">
+      <div class="phone-card-cat">Умный дом</div>
+      <h3 class="phone-card-title">Robocleaner AI Ultra</h3>
+      <p class="phone-card-desc">Робот-пылесос с 3D LiDAR и станцией автоматической самоочистки.</p>
+      
+      <div class="phone-card-tags">
+        <span class="phone-tag">3D LiDAR</span>
+        <span class="phone-tag">Auto Clean</span>
+      </div>
+
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">6 750 000 сум</span>
+        <span class="phone-price-old">7 800 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-6" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="phone-card cat-phone scroll-reveal">
+      <span class="phone-card-badge badge-ai">OLED 144Hz</span>
+      <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80" alt="QuantumPad Pro AI" class="phone-card-img">
+      <div class="phone-card-cat">Планшеты</div>
+      <h3 class="phone-card-title">QuantumPad Pro AI</h3>
+      <p class="phone-card-desc">Планшет для цифровых художников со стилусом Neural Pen 3.0.</p>
+
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">11 200 000 сум</span>
+        <span class="phone-price-old">12 900 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-7" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="phone-card cat-smart scroll-reveal">
+      <span class="phone-card-badge badge-hot">4K Дрон</span>
+      <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80" alt="AI Drone Sentinel 4K" class="phone-card-img">
+      <div class="phone-card-cat">Дроны</div>
+      <h3 class="phone-card-title">AI Drone Sentinel 4K</h3>
+      <p class="phone-card-desc">Квадрокоптер с искусственным интеллектом для следования за объектом.</p>
+
+      <div class="phone-card-price-row">
+        <span class="phone-price-curr">9 400 000 сум</span>
+        <span class="phone-price-old">10 800 000 сум</span>
+      </div>
+
+      <div class="phone-card-actions">
+        <a href="#m-quickview-8" class="phone-btn-sub">Подробнее</a>
+        <a href="oformlenie.html" class="phone-btn-main">Заказать &rarr;</a>
+      </div>
+    </div>
+
+  </main>
 
   <!-- ==========================================================================
-       ABOUT US & BENEFITS (MOBILE VIEW)
+       ABOUT SECTION
        ========================================================================== -->
-  <section id="about" style="padding:30px 16px;">
-    <div class="product-card scroll-reveal" style="padding:20px;">
-      <span class="section-tag" style="font-size:0.75rem;">О компании</span>
-      <h3 style="font-family:var(--font-display); font-size:1.3rem; color:#fff; margin-bottom:12px;">AI TEXNO в Узбекистане</h3>
-      <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">
-        Премиальный ритейлер электроники с встроенными нейромодулями, официальным сервисным центром в Ташкенте и доставкой за 24 часа.
+  <section id="about-section" style="padding:20px 14px;">
+    <div class="phone-card scroll-reveal">
+      <span class="section-tag" style="font-size:0.7rem;">Сервис в Ташкенте</span>
+      <h3 style="font-family:var(--font-display); font-size:1.25rem; color:#fff; margin-bottom:8px;">AI TEXNO COMPANY</h3>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;">
+        Официальный интернет-магазин умной техники в Узбекистане. Расчет в сумах (UZS), быстрая доставка и поддержка 24/7.
       </p>
-
-      <div style="display:flex; flex-direction:column; gap:10px; font-size:0.85rem;">
-        <div class="check-item"><span class="check-icon">✓</span> 100% Оригинальная техника</div>
-        <div class="check-item"><span class="check-icon">✓</span> Быстрая доставка до двери</div>
-        <div class="check-item"><span class="check-icon">✓</span> Заводская гарантия 36 месяцев</div>
-        <div class="check-item"><span class="check-icon">✓</span> Оплата Click, Payme, Uzum</div>
+      
+      <div style="display:flex; flex-direction:column; gap:8px; font-size:0.8rem;">
+        <div class="check-item"><span class="check-icon">✓</span> 100% Заводское качество</div>
+        <div class="check-item"><span class="check-icon">✓</span> Сервисный центр в Ташкенте</div>
+        <div class="check-item"><span class="check-icon">✓</span> Оплата Payme, Click, Uzum</div>
       </div>
     </div>
   </section>
 
-  <!-- Switch Desktop Mode Banner -->
-  <div class="switch-desktop-banner scroll-reveal">
-    <div style="font-weight:700; color:#fff; margin-bottom:6px;">Хотите полноэкранную верстку?</div>
-    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Вы можете переключиться на полную версию сайта для компьютеров и планшетов.</p>
-    <a href="index.html" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:0.88rem;">
+  <!-- Switch PC Ribbon -->
+  <div class="phone-switch-banner scroll-reveal">
+    <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-bottom:4px;">Нужна версия для ПК?</div>
+    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Вы можете открыть полноэкранную верстку сайта.</p>
+    <a href="index.html" class="btn btn-secondary" style="width:100%; justify-content:center; padding:10px; font-size:0.82rem;">
       💻 Переключить на ПК версию
     </a>
   </div>
 
   <!-- ==========================================================================
-       PURE CSS MOBILE BOTTOM SHEET MODAL (:target = #m-quickview-1)
+       PURE CSS BOTTOM SHEETS FOR QUICKVIEW
        ========================================================================== -->
   <div id="m-quickview-1" class="mobile-bottom-sheet">
-    <div class="sheet-content">
+    <div class="sheet-content" style="max-width:480px; margin:0 auto;">
       <div class="sheet-drag-handle"></div>
-      <a href="#catalog" style="position:absolute; top:20px; right:20px; color:var(--text-dim); font-size:1.6rem; text-decoration:none;">&times;</a>
+      <a href="#product-feed" style="position:absolute; top:18px; right:18px; color:var(--text-dim); font-size:1.6rem; text-decoration:none;">&times;</a>
       
-      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="NeuroPhone X Ultra" style="width:100%; height:200px; object-fit:cover; border-radius:14px; margin-bottom:14px;">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="NeuroPhone X Ultra" style="width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
       
-      <div style="font-size:0.75rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Смартфон нового поколения</div>
-      <h2 style="font-family:var(--font-display); font-size:1.4rem; color:#fff; margin:4px 0 10px;">NeuroPhone X Ultra</h2>
-      <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
-        Персональный нейропроцессор Quantum NPU 5nm с поддержкой локального искусственного интеллекта. Экран AMOLED 144Hz и быстрая зарядка 120W.
+      <div style="font-size:0.72rem; color:var(--cyan-primary); font-weight:700; text-transform:uppercase;">Флагманский смартфон</div>
+      <h3 style="font-family:var(--font-display); font-size:1.3rem; color:#fff; margin:2px 0 8px;">NeuroPhone X Ultra</h3>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:14px;">
+        Процессор Quantum NPU 5nm со встроенным искусственным интеллектом. Экран AMOLED 144Hz, 200MP камера и быстрая зарядка 120W.
       </p>
 
-      <div style="font-family:var(--font-display); font-size:1.4rem; font-weight:800; color:var(--cyan-primary); margin-bottom:18px;">
+      <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:var(--cyan-primary); margin-bottom:16px;">
         14 990 000 сум
       </div>
 
-      <div style="display:flex; gap:10px;">
-        <a href="oformlenie.html" class="btn btn-primary" style="flex:1; justify-content:center;">Оформить заказ &rarr;</a>
-        <a href="#catalog" class="btn btn-secondary" style="width:auto;">Закрыть</a>
+      <div style="display:flex; gap:8px;">
+        <a href="oformlenie.html" class="btn btn-primary" style="flex:1; justify-content:center; padding:12px; font-size:0.85rem;">Оформить заказ &rarr;</a>
+        <a href="#product-feed" class="btn btn-secondary" style="width:auto; padding:12px 16px; font-size:0.85rem;">Закрыть</a>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       PURE CSS MOBILE BOTTOM NAVIGATION TAB BAR (5 TABS)
+       FIXED BOTTOM APP NAV BAR (LOCKED TO 480PX FRAME)
        ========================================================================== -->
-  <nav class="mobile-bottom-bar">
-    <a href="mobile.html" class="tab-item active">
+  <nav class="phone-bottom-nav">
+    <a href="mobile.html" class="phone-tab-item active">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Главная</span>
     </a>
 
-    <a href="#catalog" class="tab-item">
+    <a href="#product-feed" class="phone-tab-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       <span>Каталог</span>
     </a>
 
-    <a href="#about" class="tab-item">
+    <a href="#about-section" class="phone-tab-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
       <span>О нас</span>
     </a>
 
-    <a href="oformlenie.html" class="tab-item">
+    <a href="oformlenie.html" class="phone-tab-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       <span>Корзина</span>
     </a>
 
-    <a href="login.html" class="tab-item">
+    <a href="login.html" class="phone-tab-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       <span>Профиль</span>
     </a>
