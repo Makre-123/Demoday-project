@@ -35,7 +35,10 @@
         </div>
       </a>
 
-      <nav>
+      <!-- Pure CSS Mobile Menu Checkbox Toggle -->
+      <input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle-input">
+
+      <nav class="desktop-nav">
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link">Главная</a></li>
           <li><a href="index.html#catalog" class="nav-link">Каталог</a></li>
@@ -55,6 +58,32 @@
           </svg>
           <span class="cart-badge">3</span>
         </a>
+
+        <!-- Hamburger Label -->
+        <label for="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Открыть мобильное меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <!-- Pure CSS Mobile Navigation Drawer -->
+      <div class="mobile-nav-drawer">
+        <ul class="mobile-nav-menu">
+          <li><a href="index.html" class="mobile-nav-link"><span>Главная страница</span> &rarr;</a></li>
+          <li><a href="index.html#catalog" class="mobile-nav-link"><span>Каталог товаров</span> &rarr;</a></li>
+          <li><a href="index.html#about" class="mobile-nav-link"><span>О компании</span> &rarr;</a></li>
+          <li><a href="index.html#contacts" class="mobile-nav-link"><span>Контакты</span> &rarr;</a></li>
+        </ul>
+
+        <div class="mobile-nav-actions">
+          <a href="registration.html" class="btn btn-primary" style="width:100%; justify-content:center;">
+            Создать аккаунт AI ID
+          </a>
+          <a href="oformlenie.html" class="btn btn-secondary" style="width:100%; justify-content:center;">
+            Перейти в корзину
+          </a>
+        </div>
       </div>
     </div>
   </header>
