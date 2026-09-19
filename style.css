@@ -1714,27 +1714,82 @@ button, input, select, textarea {
 
 @media (max-width: 768px) {
   /* Mobile-only performance optimization: keep desktop 100% unchanged */
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
   html {
     scroll-behavior: auto;
   }
 
   body {
-    background-attachment: scroll;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+    background: #0a0f1d !important;
+    background-image: none !important;
+    background-attachment: scroll !important;
+    background-size: auto !important;
+    background-position: center top !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  img,
+  svg {
+    filter: none !important;
   }
 
   .site-header,
-  .phone-bottom-tabbar {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+  .phone-bottom-tabbar,
+  .nav-link,
+  .btn,
+  .product-card,
+  .feature-card,
+  .review-card,
+  .logo-icon-box,
+  .hero-floating-tag,
+  .stat-item,
+  .hero-visual-card,
+  .modal-dialog,
+  .cart-drawer-dialog {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .scroll-reveal-up,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale,
+  .hero-content,
+  .hero-visual-card,
+  .hero-floating-tag,
+  .stat-item,
+  .product-card,
+  .feature-card,
+  .review-card,
+  .modal-dialog,
+  .cart-drawer-dialog {
+    animation: none !important;
+    animation-timeline: auto !important;
+    transform: none !important;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    box-shadow: none !important;
+  }
+
+  img,
+  .hero-main-img,
+  .product-img-box,
+  .about-img,
+  .detail-img-large {
+    content-visibility: auto;
+    contain: layout paint;
   }
 
   .header-inner {
