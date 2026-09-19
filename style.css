@@ -2017,3 +2017,125 @@ button, input, select, textarea {
   .catalog-filters::-webkit-scrollbar { display: none; }
   .filter-btn { flex-shrink: 0; padding: 8px 14px; font-size: 0.8rem; }
 }
+
+/* ==========================================================================
+   MOBILE PERFORMANCE OPTIMIZATIONS — @media (max-width: 480px)
+   Убираем всё тяжёлое для телефонов: blur, fixed bg, scroll animations
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* 1. УБИРАЕМ background-attachment: fixed — главная причина лагов на iOS */
+  body {
+    background-attachment: scroll !important;
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 65%, rgba(121, 40, 202, 0.10) 0%, transparent 45%),
+      linear-gradient(180deg, #0a0f1d 0%, #070c1a 100%) !important;
+  }
+
+  /* 2. УПРОЩАЕМ backdrop-filter — blur очень дорогой на мобильных GPU */
+  .site-header,
+  .mobile-nav-drawer,
+  .phone-bottom-tabbar,
+  .modal-overlay,
+  .hero-visual-card,
+  .product-card,
+  .feature-card,
+  .review-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Компенсация — делаем фон непрозрачнее чтобы не было прозрачности */
+  .site-header {
+    background: rgba(6, 9, 19, 0.98) !important;
+  }
+
+  .mobile-nav-drawer {
+    background: rgba(6, 9, 19, 0.99) !important;
+  }
+
+  .product-card,
+  .feature-card,
+  .review-card {
+    background: rgba(12, 19, 36, 0.95) !important;
+  }
+
+  /* 3. ОТКЛЮЧАЕМ scroll-driven анимации — animation-timeline: view() лагает */
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 4. УПРОЩАЕМ hero анимации */
+  .hero-content,
+  .hero-visual-card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 5. УБИРАЕМ тяжёлые box-shadow на картах */
+  .product-card,
+  .feature-card,
+  .review-card,
+  .hero-visual-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* 6. УБИРАЕМ box-shadow при hover (тяжёлый repaint) */
+  .product-card:hover,
+  .feature-card:hover {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* 7. ВЫКЛЮЧАЕМ transition на изображениях */
+  .product-img,
+  .about-img {
+    transition: none !important;
+  }
+
+  .product-card:hover .product-img {
+    transform: none !important;
+  }
+
+  /* 8. АППАРАТНОЕ УСКОРЕНИЕ для фиксированных элементов */
+  .phone-bottom-tabbar {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+    background: #040912 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 9. УПРОЩАЕМ pulseGlow — дорогая анимация */
+  .hero-badge-dot {
+    animation: none !important;
+    background: var(--cyan-primary);
+    box-shadow: none !important;
+  }
+
+  /* 10. ОТКЛЮЧАЕМ filter на иконках таббара */
+  .phone-tab.active svg {
+    filter: none !important;
+    color: var(--cyan-primary);
+  }
+
+  /* 11. УБИРАЕМ box-shadow у btn при hover */
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-addcart:hover {
+    box-shadow: none !important;
+  }
+
+  /* 12. УПРОЩАЕМ шапку */
+  .logo-icon-box {
+    box-shadow: none !important;
+  }
+}
