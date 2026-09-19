@@ -1750,10 +1750,18 @@ button, input, select, textarea {
   .stat-item,
   .hero-visual-card,
   .modal-dialog,
-  .cart-drawer-dialog {
+  .cart-drawer-dialog,
+  .hero-badge {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
     transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .hero-badge-dot {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
     box-shadow: none !important;
   }
 
