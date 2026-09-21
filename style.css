@@ -1474,18 +1474,8 @@ button, input, select, textarea {
 /* --------------------------------------------------------------------------
    PURE CSS MOBILE MENU & TOGGLE (NO JAVASCRIPT)
    -------------------------------------------------------------------------- */
-html, body {
-  overflow-x: hidden;
-}
-
 .mobile-toggle-input {
   display: none;
-}
-
-@media (max-width: 980px) {
-  body:has(.mobile-toggle-input:checked) {
-    overflow: hidden;
-  }
 }
 
 .mobile-toggle-btn {
@@ -1555,8 +1545,6 @@ html, body {
   transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
   pointer-events: none;
   overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-toggle-input:checked ~ .mobile-nav-drawer {
